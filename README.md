@@ -18,6 +18,45 @@ The web dashboard will open in your browser at `http://localhost:8501`.
 
 ---
 
+## Project Structure
+
+```
+retain/
+├── .streamlit/
+│   └── config.toml             # Streamlit runtime and theme configuration
+├── data/
+│   ├── Telco_customer_churn.xlsx  # Kaggle IBM Telco primary dataset
+│   ├── Telco-Customer-Churn.csv   # Standard CSV fallback dataset
+│   └── predictions.csv         # Out-of-fold calibrated churn scores & drivers
+├── models/
+│   ├── model.joblib            # Calibrated XGBoost production pipeline
+│   └── metrics.json            # Model benchmark evaluation metrics & curves
+├── powerbi/
+│   ├── customers_scored.csv    # Scored accounts table for Power BI import
+│   ├── feature_importance.csv  # Permutation importance rankings
+│   ├── model_comparison.csv    # Benchmark model comparison table
+│   └── POWERBI_GUIDE.md        # Step-by-step dashboard build guide
+├── src/
+│   ├── __init__.py
+│   ├── data.py                 # Data loading, cleaning, and leakage governance
+│   ├── messages.py             # Personalized retention messaging (IBM Granite / Fallback)
+│   ├── model.py                # Pipeline construction, training, and calibration
+│   ├── profit.py               # Retention profit optimization calculus
+│   └── triage.py               # Customer message triage engine
+├── styles/
+│   ├── styles.css              # Dark editorial design system & pure CSS animations
+│   └── style.css               # Backward-compatible stylesheet alias
+├── .gitignore                  # Git ignore rules
+├── app.py                      # Interactive Streamlit application
+├── project_report.md           # 10-mark academic capstone report
+├── README.md                   # Project documentation
+├── requirements-extras.txt     # Optional dependencies (IBM Granite / PyTorch)
+├── requirements.txt            # Core production dependencies
+└── train.py                    # Benchmark training, calibration & export script
+```
+
+---
+
 ## Application Structure & Pages
 
 1. **Home (`/`)**:

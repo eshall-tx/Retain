@@ -44,8 +44,11 @@ PLOTLY_EDITORIAL_LAYOUT = dict(
 
 @st.cache_data
 def load_stylesheet():
-    """Loads external editorial CSS stylesheet."""
-    css_path = os.path.join(os.path.dirname(__file__), "styles.css")
+    """Loads external editorial CSS stylesheet from the styles directory."""
+    base_dir = os.path.dirname(__file__)
+    css_path = os.path.join(base_dir, "styles", "styles.css")
+    if not os.path.exists(css_path):
+        css_path = os.path.join(base_dir, "styles", "style.css")
     if os.path.exists(css_path):
         with open(css_path, "r", encoding="utf-8") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
