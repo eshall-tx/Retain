@@ -1,0 +1,623 @@
+/* Retain. — Dark, Technical, Editorial Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   THEME TOKENS
+   ========================================================================== */
+:root {
+    --bg-main: #0D0913;
+    --text-primary: #EDE8F5;
+    --text-muted: #A398B8;
+    --text-labels: #8A7FA0;
+    --hairline: #2A2236;
+    
+    --primary-pink: #FF5FA2;
+    --hover-pink: #FF8FBE;
+    --accent-teal: #2DD4BF;
+    --accent-amber: #FBBF24;
+    
+    --font-heading: 'Inter', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+/* Base resets & Streamlit chrome removal */
+html, body, [class*="css"], .stApp {
+    font-family: var(--font-body);
+    background-color: var(--bg-main) !important;
+    color: var(--text-primary) !important;
+}
+
+#MainMenu, header, footer, [data-testid="stSidebar"], [data-testid="collapsedControl"], .stDeployButton, div[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+.stApp {
+    background-color: var(--bg-main) !important;
+    background-image: 
+        radial-gradient(circle at 92% 8%, rgba(255, 95, 162, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 8% 92%, rgba(45, 212, 191, 0.08) 0%, transparent 40%) !important;
+    background-attachment: fixed !important;
+}
+
+.block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 4rem !important;
+    max-width: 1200px !important;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & HAIRLINES (Editorial, NO boxed cards)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.03em !important;
+    color: var(--text-primary) !important;
+    text-transform: none !important;
+}
+
+.mono-label {
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    letter-spacing: 0.04em !important;
+    color: var(--text-labels) !important;
+    text-transform: lowercase !important;
+}
+
+.text-pink { color: var(--primary-pink) !important; }
+.text-teal { color: var(--accent-teal) !important; }
+.text-amber { color: var(--accent-amber) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+.hairline-divider {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 2.2rem 0;
+    width: 100%;
+}
+
+.hairline-divider-tight {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 1.2rem 0;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MINIMAL TOP NAVIGATION BAR
+   ========================================================================== */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.nav-brand {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.pink-period {
+    color: var(--primary-pink);
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--hover-pink);
+}
+
+.nav-link.active {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--primary-pink);
+}
+
+/* Streamlit button overrides for seamless top navigation */
+div[data-testid="stHorizontalBlock"] .nav-btn button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 4px 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: var(--text-muted) !important;
+    border-bottom: 1px solid transparent !important;
+}
+
+div[data-testid="stHorizontalBlock"] .nav-btn button:hover {
+    color: var(--hover-pink) !important;
+    border-bottom: 1px solid var(--hover-pink) !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+div[data-testid="stHorizontalBlock"] .nav-btn-active button {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--primary-pink) !important;
+}
+
+/* ==========================================================================
+   BUTTONS: Primary Pill & Secondary Plain Link
+   ========================================================================== */
+.btn-primary-pill {
+    background-color: var(--primary-pink);
+    color: #0D0913 !important;
+    border-radius: 9999px;
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    border: none;
+}
+
+.btn-primary-pill:hover {
+    background-color: var(--hover-pink);
+    transform: translateY(-1px);
+}
+
+.btn-secondary-link {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s ease;
+}
+
+.btn-secondary-link:hover {
+    color: var(--primary-pink);
+}
+
+/* Streamlit native button styling */
+div.stButton > button {
+    background: var(--primary-pink) !important;
+    color: #0D0913 !important;
+    border-radius: 9999px !important;
+    border: none !important;
+    font-family: var(--font-body) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 22px !important;
+    transition: all 0.15s ease !important;
+    box-shadow: none !important;
+}
+
+div.stButton > button:hover {
+    background: var(--hover-pink) !important;
+    color: #0D0913 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(255, 95, 162, 0.25) !important;
+}
+
+/* ==========================================================================
+   HERO & STATUS LINE
+   ========================================================================== */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.4rem;
+}
+
+.blinking-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink-fade 2s infinite ease-in-out;
+}
+
+@keyframes blink-fade {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 6px var(--accent-teal); }
+}
+
+.hero-headline {
+    font-size: 64px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtext {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* ==========================================================================
+   SIGNATURE CUSTOMER COHORT ANIMATION (Pure CSS)
+   ========================================================================== */
+.cohort-container {
+    width: 550px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    background: transparent;
+}
+
+.cohort-header {
+    width: 550px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.cohort-legend {
+    width: 550px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.legend-dot-teal {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-dot-pink {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 95, 162, 0.6);
+    display: inline-block;
+}
+
+.cohort-scanline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--primary-pink), transparent);
+    box-shadow: 0 0 8px var(--primary-pink);
+    animation: scan-sweep 8s infinite linear;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes scan-sweep {
+    0% { left: 0%; opacity: 0; }
+    5% { opacity: 0.8; }
+    85% { opacity: 0.8; }
+    95%, 100% { left: 100%; opacity: 0; }
+}
+
+.pink-churn-dot {
+    animation: drift-exit 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+@keyframes drift-exit {
+    0%, 25% {
+        transform: translateX(0) scale(1);
+        opacity: 0.95;
+    }
+    60% {
+        transform: translateX(110px) scale(0.9);
+        opacity: 0.8;
+    }
+    78% {
+        transform: translateX(170px) scale(0.4);
+        opacity: 0;
+    }
+    85%, 100% {
+        transform: translateX(0) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   OPEN STATS ROW (Between two hairlines, vertical hairline dividers)
+   ========================================================================== */
+.stats-row-container {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.2rem 0;
+    margin: 3.5rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.stat-cell {
+    padding: 0 2rem;
+}
+
+.stat-cell:first-child {
+    padding-left: 0;
+}
+
+.stat-cell:not(:last-child) {
+    border-right: 1px solid var(--hairline);
+}
+
+.stat-number {
+    font-family: var(--font-mono);
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+}
+
+.sparkline-svg {
+    width: 140px;
+    height: 16px;
+    display: block;
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   PLAYGROUND & CONTROLS
+   ========================================================================== */
+.playground-section {
+    margin: 4rem 0;
+}
+
+.section-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--primary-pink);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+    text-transform: lowercase;
+}
+
+.contract-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 1.8rem;
+    gap: 2rem;
+}
+
+.contract-tab-item {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-bottom: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.contract-tab-item.active {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--primary-pink);
+}
+
+/* Slim 3px sliders with colored fills */
+div[data-testid="stSlider"] {
+    padding-top: 0 !important;
+    padding-bottom: 1.2rem !important;
+}
+
+div[data-testid="stSlider"] div[data-baseweb="slider"] {
+    height: 20px !important;
+}
+
+div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div {
+    height: 3px !important;
+    background-color: var(--hairline) !important;
+    border-radius: 9999px !important;
+}
+
+div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div > div {
+    height: 3px !important;
+    border-radius: 9999px !important;
+}
+
+/* Teal slider variant */
+.slider-teal div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div > div {
+    background-color: var(--accent-teal) !important;
+}
+
+/* Amber slider variant */
+.slider-amber div[data-testid="stSlider"] div[data-baseweb="slider"] > div > div > div {
+    background-color: var(--accent-amber) !important;
+}
+
+div[data-testid="stSlider"] div[role="slider"] {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: var(--bg-main) !important;
+    border: 2px solid var(--primary-pink) !important;
+    box-shadow: none !important;
+}
+
+/* SVG Gauge Animation */
+.gauge-arc-path {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: draw-gauge 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes draw-gauge {
+    to {
+        stroke-dashoffset: var(--target-offset, 80);
+    }
+}
+
+.gauge-prob-number {
+    font-family: var(--font-mono);
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: var(--primary-pink);
+    line-height: 1;
+}
+
+/* Reason list items (Shift 8px right and soft pink hover) */
+.reason-row {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 13px;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.reason-row:hover {
+    transform: translateX(8px);
+    color: var(--hover-pink);
+}
+
+.reason-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--primary-pink);
+    min-width: 20px;
+}
+
+/* ==========================================================================
+   INSIGHT ENTRIES (3 Columns with colored top rules)
+   ========================================================================== */
+.insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
+}
+
+.insight-col {
+    padding-top: 1.2rem;
+}
+
+.insight-col.top-pink { border-top: 2px solid var(--primary-pink); }
+.insight-col.top-teal { border-top: 2px solid var(--accent-teal); }
+.insight-col.top-amber { border-top: 2px solid var(--accent-amber); }
+
+.insight-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+}
+
+/* ==========================================================================
+   RISK EXPLORER & OPEN TABLE STYLING (No boxed card cells)
+   ========================================================================== */
+.table-open-header {
+    display: grid;
+    grid-template-columns: 100px 140px 100px 100px 130px 150px 80px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-labels);
+}
+
+.table-open-row {
+    display: grid;
+    grid-template-columns: 100px 140px 100px 100px 130px 150px 80px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 13px;
+    align-items: center;
+    transition: background-color 0.15s ease;
+}
+
+.table-open-row:hover {
+    background-color: rgba(255, 95, 162, 0.03);
+}
+
+.prob-bar-container {
+    width: 100px;
+    height: 4px;
+    background-color: var(--hairline);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.prob-bar-fill {
+    height: 100%;
+    background-color: var(--primary-pink);
+    border-radius: 2px;
+}
+
+/* Streamlit dataframes styling */
+div[data-testid="stDataFrame"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* ==========================================================================
+   FADE-UP ANIMATION & REDUCED MOTION SUPPORT
+   ========================================================================== */
+.fade-up-1 { animation: fade-up 0.5s ease-out 0.05s both; }
+.fade-up-2 { animation: fade-up 0.5s ease-out 0.15s both; }
+.fade-up-3 { animation: fade-up 0.5s ease-out 0.25s both; }
+.fade-up-4 { animation: fade-up 0.5s ease-out 0.35s both; }
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,5 @@
+# Optional dependencies for Phase 3 (IBM Granite 4.0 Nano on-device LLM generation)
+# Install separately: pip install -r requirements-extras.txt
+torch>=2.0.0
+transformers>=4.40.0
+accelerate>=0.28.0
